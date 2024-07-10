@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation"
+        style="padding: 0 10%; background-color: whitesmoke;">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="http://localhost:5000">
+                <i class="fa-brands fa-weebly" style="font-size: 60px;"></i>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a href="http://localhost:5000" class="navbar-item">
+                    Home
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a class="button is-ghost" href="/logout">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-6">
+        <div class="my-4" style="display: flex; align-items: center; justify-content: end;">
+            <a href="/add" class="button is-link">Add</a>
+        </div>
+        <% if (sections.length>0) { %>
+            <table class="table is-bordered is-striped is-narrow is-hoverable" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="has-text-centered">Section Name</th>
+                        <th class="has-text-centered">Duration</th>
+                        <th class="has-text-centered">Main Task</th>
+                        <th class="has-text-centered" style="width: 15%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% sections.forEach(section=> { %>
+                        <tr>
+                            <td>
+                                <%= section.sectionName %>
+                            </td>
+                            <td style="text-align: center;">
+                                <%= section.duration %>
+                            </td>
+                            <td style="text-align: center;">
+                                <%= section.isMainTask %>
+                            </td>
+                            <td>
+                                <div class="buttons is-flex is-align-content-center is-justify-content-center">
+                                    <a href="/edit/<%= section.id %>" class="button is-white">Edit</a>
+                                    <a href="/delete/<%= section.id %>" class="button is-white">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <% } else{ %>
+                <p style="padding: 16px 32px; border-radius: 8px; background-color: #f0eded; text-align: center;">
+                    No result match.
+                </p>
+                <% } %>
+    </div>
+</body>
+
+</html>

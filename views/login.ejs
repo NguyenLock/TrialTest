@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <div style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div style="width: 40%;">
+            <h1 style="text-align: center; margin-bottom: 40px; font-size: xx-large; font-weight: bold;">SDN301m</h1>
+            <% if (success_msg!="" ) { %>
+                <div class="mx-6 mb-2 p-4" style="background-color: whitesmoke; color: red; border-radius: 8px;">
+                    <%= success_msg%>
+                </div>
+                <% } %>
+                    <% if (error_msg!="" ) { %>
+                        <div class="mx-6 mb-2 p-4"
+                            style="background-color: whitesmoke; color: red; border-radius: 8px;">
+                            <%= error_msg %>
+                        </div>
+                        <% } %>
+                            <% if (error!="" ) { %>
+                                <div class="mx-6 mb-2 p-4"
+                                    style="background-color: whitesmoke; color: red; border-radius: 8px;">
+                                    <%= error %>
+                                </div>
+                                <% } %>
+                                    <form action="/" method="post" class="mx-6 p-6"
+                                        style="background-color: whitesmoke; border-radius: 8px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);">
+                                        <p class="mb-4"
+                                            style="text-align: center; font-weight: bold; font-size: larger;">
+                                            Log In
+                                        </p>
+                                        <div class="field">
+                                            <label class="label">Username</label>
+                                            <div class="control">
+                                                <input name="username" class="input" type="text"
+                                                    placeholder="Enter username" required>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">Password</label>
+                                            <div class="control">
+                                                <input name="password" class="input" type="password"
+                                                    placeholder="Enter password" required>
+                                            </div>
+                                        </div>
+                                        <div class="field is-grouped mt-6">
+                                            <div class="control">
+                                                <button class="button is-link" type="submit">
+                                                    Login
+                                                </button>
+                                            </div>
+                                            <div class="control">
+                                                <button class="button is-link is-light" type="reset">
+                                                    Reset
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
