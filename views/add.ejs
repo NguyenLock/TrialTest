@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation"
+        style="padding: 0 10%; background-color: whitesmoke;">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="http://localhost:5000">
+                <i class="fa-brands fa-weebly" style="font-size: 60px;"></i>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a href="http://localhost:5000" class="navbar-item">
+                    Home
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a class="button is-ghost" href="/logout">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-6">
+        <% if (typeof errors!="undefined" ) { %>
+            <% errors.forEach((error)=> { %>
+                <div class="mx-6 mb-2 p-4" style="background-color: whitesmoke; color: red; border-radius: 8px;">
+                    <%= error.msg %>
+                </div>
+                <% }) %>
+                    <% } %>
+                        <form action="/add" method="post" class="mx-6 px-6">
+                            <div class="field">
+                                <label class="label">Section Name*</label>
+                                <div class="control">
+                                    <input name="sectionName" class="input" type="text" placeholder="Enter section name"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Section Description*</label>
+                                <div class="control">
+                                    <input name="sectionDescription" class="input" type="text"
+                                        placeholder="Enter section description" required>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Duration *</label>
+                                <div class="control">
+                                    <input name="duration" class="input" type="number" placeholder="Enter duration"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Main Task</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select name="isMainTask" defaultValue="false">
+                                            <option value="false">False</option>
+                                            <option value="true">True</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Course</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select name="course">
+                                            <% courses.forEach(course=> { %>
+                                                <option value="<%= course.id %>">
+                                                    <%= course.courseName %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button class="button is-link" type="submit">
+                                        Add
+                                    </button>
+                                </div>
+                                <div class="control">
+                                    <a class="button is-link is-light" href="/dashboard">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+    </div>
+</body>
+
+</html>

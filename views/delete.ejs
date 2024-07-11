@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation"
+        style="padding: 0 10%; background-color: whitesmoke;">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="http://localhost:5000">
+                <i class="fa-brands fa-weebly" style="font-size: 60px;"></i>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a href="http://localhost:5000" class="navbar-item">
+                    Home
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a class="button is-ghost" href="/logout">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-6" style="display: flex; align-items: center; justify-content: center;">
+        <form action="/delete/<%= section.id %>" method="post" class="px-6 py-6"
+            style="width: 40%; background-color: whitesmoke; border-radius: 8px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);">
+            <p class="mb-4" style="text-align: center; font-weight: bold; font-size: larger;">
+                Delete
+            </p>
+            <p class="mb-4" style="text-align: center; font-weight: normal; font-size: larger;">
+                Are you sure to delete this section?
+            </p>
+            <div class="field" style="display: flex; align-items: center; justify-content: center;">
+                <label>Section Name</label>
+                <div class="control">
+                    <input name="sectionName" class="input" type="text" placeholder="Enter section name" required
+                        value="<%= section.sectionName %>" disabled>
+                </div>
+            </div>
+
+            <div class="field is-grouped" style="display: flex; align-items: center; justify-content: center;">
+                <div class="control">
+                    <button class="button is-link" type="submit">
+                        Delete
+                    </button>
+                </div>
+                <div class="control">
+                    <a class="button is-link is-light" href="/dashboard">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
